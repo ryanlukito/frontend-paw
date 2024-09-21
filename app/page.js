@@ -6,7 +6,7 @@ import StockPage from "./StockPage/page";
 export default function Home() {
   return (
     <>
-      <LoginPage></LoginPage>
+      <LoginPage />
       {/* <StockPage></StockPage> */}
     </>
   );
