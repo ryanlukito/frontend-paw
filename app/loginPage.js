@@ -32,7 +32,7 @@ const loginPage = () => {
                 />
               </div>
               <button className="w-[11.302vw] h-[2.188vw] bg-[#43066C] rounded-[1.563vw] text-white flex justify-center items-center font-bold text-[0.833vw] hover:scale-105 hover:bg-purple-950 transition ease-in-out duration-500">LOGIN</button>
-              <p>Don&apos;t have account? <Link className="font-bold text-[#43066C]" href="/registerPage">Please Register</Link></p>
+              <p>Don&apos;t have account? <Link className="font-bold text-[#43066C]" href="/RegisterPage">Please Register</Link></p>
           </div>
           <div className="h-full border-purple-900 border-[0.01vw]"></div>
           <div className="w-[45vw] h-full flex flex-col justify-center items-start ml-[2vw] relative">
