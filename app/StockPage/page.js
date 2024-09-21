@@ -5,7 +5,7 @@ import NavBar from '../components/NavBar'
 
 const stockPage = () => {
   return (
-    <section className="w-screen h-screen bg-[#FFFFFF] relative flex flex-row">
+    <section className="w-screen min-h-screen aspect-ratio[1920/1080] bg-[#FFFFFF] relative flex flex-row">
         <NavBar></NavBar>
         <div className="w-full h-full">
           <h1 className="text-[2.604vw] text-[#43066C] font-bold py-[1.5vw] px-[3vw]">Hi, Welcome!</h1>
