@@ -20,7 +20,7 @@ const registerPage = () => {
                 <div className="w-[36.88vw] h-[37.774vw] flex flex-col justify-between">
                     <div>
                         <h1 className="font-bold text-[1.302vw]">Create Your Account</h1>
-                        <p className="text-[0.781vw] my-[1vw]">Create account to view and manage  the security </p>
+                        <p className="text-[0.781vw] my-[1vw]">Create account to view and manage the security </p>
                     </div>
                     <div className="flex items-center justify-between">
                         <div className="flex flex-col">
@@ -66,7 +66,7 @@ const registerPage = () => {
                     </div>
                     <div className="flex flex-row">
                         <input type="checkbox" />
-                        <span className="ml-[1vw]">By creating an account you agree to our <a className="font-bold text-blue-500" href="">Terms of Service</a> and <a href="" className="font-bold text-blue-500">Privacy Policy</a></span>
+                        <span className="ml-[1vw] text-[0.781vw]">By creating an account you agree to our <a className="font-bold text-blue-500" href="">Terms of Service</a> and <a href="" className="font-bold text-blue-500">Privacy Policy</a></span>
                     </div>
                     <button className="w-[36.8vw] h-[2.976vw] bg-purple-900 flex items-center justify-center text-white font-bold text-[0.938vw] rounded-[0.3vw] hover:bg-purple-950 transition ease-in-out duration-500">Create your account</button>
                 </div>
