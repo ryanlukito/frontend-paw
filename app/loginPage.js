@@ -4,16 +4,10 @@ import Link from "next/link";
 
 const loginPage = () => {
   return (
-    <section className="w-full min-h-screen pl-[6vw] pt-[3vw] aspect-[1920/1080] bg-gradient-to-r from-[#D0BFF9E5] to-[#2B056BE5]">
-      <div className="max-w-[30vw]">
-        <h1 className="font-bold text-white text-[5.208vw] drop-shadow-xl">
-          FurniStock
-
-
-
-          
-        </h1>
-      </div>
+    <section className="w-full min-h-screen pl-[6vw] pt-[3vw] bg-gradient-to-r from-[#D0BFF9E5] to-[#2B056BE5]">
+      <h1 className="w-fit font-bold text-white text-[5.208vw] drop-shadow-xl">
+        FurniStock
+      </h1>
       <div className="w-[80vw] h-[34.115vw] flex bg-[#F7E5F7] rounded-[1.5vw] mt-[2vw] items-center">
         <div className="w-[35vw] h-[32vw] flex flex-col justify-around items-center">
           <Image
