@@ -4,11 +4,11 @@ import Link from "next/link";
 
 const loginPage = () => {
   return (
-    <section className="w-full min-h-screen pl-[6vw] pt-[3vw] bg-gradient-to-r from-[#D0BFF9E5] to-[#2B056BE5]">
-      <h1 className="w-fit font-bold text-white text-[5.208vw] drop-shadow-xl">
-        FurniStock
-      </h1>
-      <div className="w-[80vw] h-[34.115vw] flex bg-[#F7E5F7] rounded-[1.5vw] mt-[2vw] items-center">
+    <section className="w-screen h-screen flex items-center justify-start pl-[6vw] pt-[3vw] bg-gradient-to-r from-[#D0BFF9E5] to-[#2B056BE5]">
+      <div className="w-[80vw] h-[34.115vw] flex bg-[#F7E5F7] relative rounded-[1.5vw] mt-[2vw] items-center">
+        <h1 className="w-fit font-bold text-white text-[5.208vw] drop-shadow-xl absolute top-[-8vw]">
+          FurniStock
+        </h1>
         <div className="w-[35vw] h-[32vw] flex flex-col justify-around items-center">
           <Image
             src="/assets/image/MaleUser.png"
@@ -24,7 +24,7 @@ const loginPage = () => {
             <input
               type="email"
               placeholder="example@gmail.com"
-              className="appearance-none bg-transparent w-[18.802vw] border-b-[0.105vw] border-purple-700 text-gray-700 focus:outline-none focus:border-purple-900"
+              className="appearance-none bg-transparent w-[18.802vw] border-b-[0.105vw] border-purple-700 text-gray-700 focus:outline-none focus:border-purple-900 placeholder:text-[1vw]"
             />
           </div>
           <div className="flex flex-col">
@@ -34,7 +34,7 @@ const loginPage = () => {
             <input
               type="email"
               placeholder="Input your password"
-              className="appearance-none bg-transparent w-[18.802vw] border-b-[0.105vw] border-purple-700 text-gray-700 focus:outline-none focus:border-purple-900"
+              className="appearance-none bg-transparent w-[18.802vw] border-b-[0.105vw] border-purple-700 text-gray-700 focus:outline-none focus:border-purple-900 placeholder:text-[1vw]"
             />
           </div>
           <button className="w-[11.302vw] h-[2.188vw] bg-[#43066C] rounded-[1.563vw] text-white flex justify-center items-center font-bold text-[0.833vw] hover:scale-105 hover:bg-purple-950 transition ease-in-out duration-500">
