@@ -6,8 +6,8 @@ import StockPage from "./StockPage/page";
 export default function Home() {
   return (
     <>
-      {/* <LoginPage></LoginPage> */}
-      <StockPage></StockPage>
+      <LoginPage></LoginPage>
+      {/* <StockPage></StockPage> */}
     </>
   );
 }

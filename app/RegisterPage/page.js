@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const registerPage = () => {
   return (
-    <section className="w-screen h-screen p-[3vw] bg-[#F2EDFCE5] flex flex-row items-center justify-center">
+    <section className="w-full min-h-screen p-[3vw] bg-[#F2EDFCE5] flex flex-row items-center justify-center">
         <div className="flex w-[90vw] h-[44.14vw] justify-around">
             <div className="w-[43.81vw] h-full bg-[#2B056B] rounded-[2.083vw] p-[2vw] relative drop-shadow-xl">
                 <h1 className="font-bold text-[1.823vw] text-white">FurniStock helps you <br/>to track your items</h1>
