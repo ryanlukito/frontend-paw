@@ -1,20 +1,14 @@
-import Image from "next/image";
-import LoginPage from "./loginPage";
+"use client";
+
 import StockPage from "./StockPage/page";
-import AddItem from './AddItem/page';
-import OutStockPage from "./OutStockPage/page";
-import InStockPage from "./InStockPage/page";
+import dotenv from "dotenv";
 
 dotenv.config();
 
 export default function Home() {
   return (
     <>
-      {/* <LoginPage /> */}
-      {/* <StockPage/> */}
-      <AddItem/>
-      {/* <OutStockPage/> */}
-      {/* <InStockPage/> */}
+      <StockPage />
     </>
   );
 }
