@@ -38,6 +38,9 @@ const RegisterPage = () => {
     dispatch(register(userData));
   };
 
+
+const RegisterPage = () => {
+
   return (
     <section className="w-screen h-screen p-[3vw] bg-[#F2EDFCE5] flex flex-row items-center justify-center">
       <div className="flex w-[90vw] h-[44.14vw] justify-around">
@@ -141,5 +144,6 @@ const RegisterPage = () => {
     </section>
   );
 };
+
 
 export default RegisterPage;
