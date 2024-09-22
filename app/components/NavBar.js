@@ -3,9 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const source = [
-    {src: "/assets/image/stockpot.png", text1: "Furniture Stock", width: "w-[1.51vw]", height: "h-[1.563vw]",linkto: "#"},
-    {src: "/assets/image/in.png", text1: "In Stock", width: "w-[1.458vw]", height: "h-[1.406vw]",linkto: "#"},
-    {src: "/assets/image/out.png", text1: "Out Stock", width: "w-[1.354vw]", height: "h-[1.615vw]",linkto: "#"},
+    {src: "/assets/image/stockpot.png", text1: "Furniture Stock", width: "w-[1.51vw]", height: "h-[1.563vw]",linkto: "/StockPage"},
+    {src: "/assets/image/in.png", text1: "In Stock", width: "w-[1.458vw]", height: "h-[1.406vw]",linkto: "/InStockPage"},
+    {src: "/assets/image/out.png", text1: "Out Stock", width: "w-[1.354vw]", height: "h-[1.615vw]",linkto: "/OutStockPage"},
   ];
 
 const NavBar = () => {

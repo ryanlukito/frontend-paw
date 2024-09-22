@@ -13,19 +13,19 @@ const AddItem = () => {
   const postData = () => {};
   return (
     <section className="w-screen h-screen p-[3vw] bg-[#F2EDFCE5] flex flex-row items-center justify-center">
-      <div className="flex w-[90vw] h-[44.14vw] justify-around">
+      <div className="flex w-[90vw] h-[40vw] justify-around">
         <div className="relative z-10">
           <div className="w-[43.422vw] h-full bg-[#FFFFFF] rounded-[2.083vw] absolute flex items-center justify-center drop-shadow-xl">
             <div className="w-[36.88vw] h-[37.774vw] flex flex-col justify-around">
               <div>
                 <h1 className="font-bold text-[1.302vw]">Add Item</h1>
-                <p className="text-[0.781vw] my-[1vw]">
+                <p className="text-[0.781vw] mt-[1vw]">
                   Add your item and its detail here{" "}
                 </p>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex flex-col">
-                  <label className="mb-[0.5vw]">Item Name</label>
+                  <label className="mb-[0.5vw] text-[1vw]">Item Name</label>
                   <input
                     type="text"
                     placeholder=""
@@ -35,7 +35,7 @@ const AddItem = () => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="mb-[0.5vw]">Size (cm)</label>
+                  <label className="mb-[0.5vw] text-[1vw]">Size (cm)</label>
                   <input
                     type="text"
                     placeholder=""
@@ -44,7 +44,7 @@ const AddItem = () => {
                 </div>
               </div>
               <div className="flex flex-col">
-                <label className="mb-[0.5vw]">Brand</label>
+                <label className="mb-[0.5vw] text-[1vw]">Brand</label>
                 <input
                   type="text"
                   placeholder=""
@@ -53,7 +53,7 @@ const AddItem = () => {
               </div>
               <div className="flex items justify-between">
                 <div className="flex flex-col">
-                  <label className="mb-[0.5vw]">Stock</label>
+                  <label className="mb-[0.5vw] text-[1vw]">Stock</label>
                   <input
                     type="text"
                     placeholder=""
@@ -61,7 +61,7 @@ const AddItem = () => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="mb-[0.5vw]">Location</label>
+                  <label className="mb-[0.5vw] text-[1vw]">Location</label>
                   <input
                     type="text"
                     placeholder=""

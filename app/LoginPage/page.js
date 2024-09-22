@@ -42,7 +42,7 @@ const LoginPage = () => {
             alt="icon1"
             className="w-[6.615vw] h-[5.677vw] object-cover mt-[1vw]"
           />
-          <form onSubmit={handleLogin} className="flex flex-col">
+          <form onSubmit={handleLogin} className="flex flex-col items-center">
             <div className="flex flex-col">
               <label className="font-bold text-purple-900 text-[1.042vw] mb-[1vw]">
                 Username
@@ -86,7 +86,7 @@ const LoginPage = () => {
         </div>
         <div className="h-full border-purple-900 border-[0.01vw]"></div>
         <div className="w-[45vw] h-full flex flex-col justify-center items-start ml-[2vw] relative">
-          <h1 className="text-[4.167vw] text-[#43066C] font-bold leading-none absolute top-0">
+          <h1 className="text-[4.167vw] text-[#43066C] font-bold leading-none absolute top-[2vw]">
             When Style <br />
             Meets
             <br /> Comfort
