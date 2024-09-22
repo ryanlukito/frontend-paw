@@ -1,7 +1,7 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
 
-const stockPage = () => {
+const StockPage = () => {
   return (
     <section className="w-screen h-screen bg-[#FFFFFF] relative flex flex-row">
         <NavBar></NavBar>
@@ -71,4 +71,4 @@ const stockPage = () => {
   );
 };
 
-export default stockPage;
+export default StockPage;
