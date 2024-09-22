@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const registerPage = () => {
+const AddItem = () => {
   return (
     <section className="w-screen h-screen p-[3vw] bg-[#F2EDFCE5] flex flex-row items-center justify-center">
       <div className="flex w-[90vw] h-[44.14vw] justify-around">
@@ -81,4 +81,4 @@ const registerPage = () => {
   );
 };
 
-export default registerPage;
+export default AddItem;

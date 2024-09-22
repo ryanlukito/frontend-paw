@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import NavBar from '../components/NavBar'
 
-const stockPage = () => {
+const StockPage = () => {
   const [items, setItems] = useState(
     Array(10).fill({ name: 'Dummy', brand: 'Dumbrand', size: '8x10', stock: 1, location: 'Jogja' })
   );
@@ -120,4 +120,4 @@ const stockPage = () => {
   );
 };
 
-export default stockPage;
+export default StockPage;
