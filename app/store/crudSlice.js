@@ -10,17 +10,16 @@ const initialState = {
   error: null,
 };
 
-// Thunks for CRUD operations
+export const getAllProduct = createAsyncThunk(
+  "crud/getAllProduct",
+  async () => {
+    const response = await axios.get(
+      `https://backend-paw-rho.vercel.app/api/v1/products/`
+    );
+    return response.data;
+  }
+);
 
-// Get all products
-export const getAllProduct = createAsyncThunk("crud/getAllProduct", async () => {
-  const response = await axios.get(
-    `https://backend-paw-rho.vercel.app/api/v1/products/`
-  );
-  return response.data;
-});
-
-// Get product by ID
 export const getProductbyId = createAsyncThunk(
   "crud/getProductbyId",
   async (id) => {
@@ -31,7 +30,6 @@ export const getProductbyId = createAsyncThunk(
   }
 );
 
-// Update product by ID
 export const updateProduct = createAsyncThunk(
   "crud/updateProduct",
   async ({ id, data }) => {
@@ -66,13 +64,11 @@ export const deleteProduct = createAsyncThunk(
   }
 );
 
-// Slice for handling CRUD operations
 const crudSlice = createSlice({
   name: "crud",
   initialState,
-  reducers: {}, // You can add custom reducers here if needed
+  reducers: {},
   extraReducers: (builder) => {
-    // Get all products
     builder
       .addCase(getAllProduct.pending, (state) => {
         state.loading = true;
@@ -88,7 +84,6 @@ const crudSlice = createSlice({
         state.error = action.error.message;
       });
 
-    // Get product by ID
     builder
       .addCase(getProductbyId.pending, (state) => {
         state.loading = true;
@@ -104,7 +99,6 @@ const crudSlice = createSlice({
         state.error = action.error.message;
       });
 
-    // Update product by ID
     builder
       .addCase(updateProduct.pending, (state) => {
         state.loading = true;
@@ -123,7 +117,6 @@ const crudSlice = createSlice({
         state.error = action.error.message;
       });
 
-    // Add new product
     builder
       .addCase(addProduct.pending, (state) => {
         state.loading = true;
@@ -139,7 +132,6 @@ const crudSlice = createSlice({
         state.error = action.error.message;
       });
 
-    // Delete product by ID
     builder
       .addCase(deleteProduct.pending, (state) => {
         state.loading = true;
@@ -148,7 +140,9 @@ const crudSlice = createSlice({
       .addCase(deleteProduct.fulfilled, (state, action) => {
         state.loading = false;
         const deletedProductId = action.payload._id;
-        state.data = state.data.filter((product) => product._id !== deletedProductId);
+        state.data = state.data.filter(
+          (product) => product._id !== deletedProductId
+        );
         state.error = null;
       })
       .addCase(deleteProduct.rejected, (state, action) => {

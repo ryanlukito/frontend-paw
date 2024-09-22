@@ -1,33 +1,32 @@
 "use client";
 
-import React, { useState, useEffect } from "react"; // Added useState and useEffect import
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import NavBar from "../components/NavBar"; // Assuming NavBar is in components folder
+import NavBar from "../components/NavBar";
+import {
+  getAllProduct,
+  addProduct,
+  updateProduct,
+  deleteProduct,
+} from "../store/crudSlice";
 
 const StockPage = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const { data: items, loading } = useSelector((state) => state.crud);
+
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [editValues, setEditValues] = useState({});
 
   useEffect(() => {
     if (!isAuthenticated) {
       router.push("/LoginPage");
+    } else {
+      dispatch(getAllProduct()); // Fetch the products once the user is authenticated
     }
-  }, [isAuthenticated, router]);
-
-  // Initialize the items
-  const [items, setItems] = useState(
-    Array(10).fill({
-      name: "Dummy",
-      brand: "Dumbrand",
-      size: "8x10",
-      stock: 1,
-      location: "Jogja",
-    })
-  );
-
-  const [editingIndex, setEditingIndex] = useState(null); // To store which item is being edited
-  const [editValues, setEditValues] = useState({}); // Stores the edit values for the current item
+  }, [isAuthenticated, router, dispatch]);
 
   // Handle edit click
   const handleEditClick = (index) => {
@@ -35,18 +34,31 @@ const StockPage = () => {
     setEditValues(items[index]);
   };
 
-  // Handle input change for edit
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle save click for the edit
   const handleSaveClick = () => {
-    const updatedItems = [...items];
-    updatedItems[editingIndex] = editValues;
-    setItems(updatedItems);
+    const updatedProduct = editValues;
+    const id = items[editingIndex]._id; // Assuming the product ID is stored in the '_id' field
+    dispatch(updateProduct({ id, data: updatedProduct }));
     setEditingIndex(null);
+  };
+
+  const handleAddClick = () => {
+    const newProduct = {
+      name: "New Item",
+      brand: "New Brand",
+      size: "8x10",
+      stock: 10,
+      location: "Location",
+    };
+    dispatch(addProduct({ data: newProduct }));
+  };
+
+  const handleDeleteClick = (id) => {
+    dispatch(deleteProduct(id));
   };
 
   return (
@@ -85,7 +97,10 @@ const StockPage = () => {
           </div>
 
           <div className="flex flex-col">
-            <button className="w-[14.219vw] h-[1.927vw] bg-[#43066C] rounded-[0.4vw] font-bold text-white mb-[0.5vw]">
+            <button
+              onClick={handleAddClick}
+              className="w-[14.219vw] h-[1.927vw] bg-[#43066C] rounded-[0.4vw] font-bold text-white mb-[0.5vw]"
+            >
               Add Items
             </button>
             <input
@@ -111,78 +126,82 @@ const StockPage = () => {
                 </tr>
               </thead>
               <tbody className="bg-white">
-                {items.map((item, i) => (
-                  <tr key={i} className="hover:bg-[#F3F4F6]">
-                    <td className="border px-4 py-2">{i + 1}</td>
-                    {editingIndex === i ? (
-                      <>
-                        <td className="border px-4 py-2">
-                          <input
-                            name="name"
-                            value={editValues.name}
-                            onChange={handleInputChange}
-                          />
-                        </td>
-                        <td className="border px-4 py-2">
-                          <input
-                            name="brand"
-                            value={editValues.brand}
-                            onChange={handleInputChange}
-                          />
-                        </td>
-                        <td className="border px-4 py-2">
-                          <input
-                            name="size"
-                            value={editValues.size}
-                            onChange={handleInputChange}
-                          />
-                        </td>
-                        <td className="border px-4 py-2">
-                          <input
-                            name="stock"
-                            type="number"
-                            value={editValues.stock}
-                            onChange={handleInputChange}
-                          />
-                        </td>
-                        <td className="border px-4 py-2">
-                          <input
-                            name="location"
-                            value={editValues.location}
-                            onChange={handleInputChange}
-                          />
-                        </td>
-                        <td className="border px-4 py-2">
-                          <button
-                            onClick={handleSaveClick}
-                            className="bg-green-500 text-white px-3 py-1 rounded"
-                          >
-                            Save
-                          </button>
-                        </td>
-                      </>
-                    ) : (
-                      <>
-                        <td className="border px-4 py-2">{item.name}</td>
-                        <td className="border px-4 py-2">{item.brand}</td>
-                        <td className="border px-4 py-2">{item.size}</td>
-                        <td className="border px-4 py-2">{item.stock}</td>
-                        <td className="border px-4 py-2">{item.location}</td>
-                        <td className="border px-4 py-2">
-                          <button
-                            onClick={() => handleEditClick(i)}
-                            className="bg-yellow-500 text-white px-3 py-1 rounded"
-                          >
-                            Edit
-                          </button>
-                          <button className="bg-red-500 text-white px-3 py-1 rounded">
-                            Delete
-                          </button>
-                        </td>
-                      </>
-                    )}
-                  </tr>
-                ))}
+                {!loading &&
+                  items.map((item, i) => (
+                    <tr key={i} className="hover:bg-[#F3F4F6]">
+                      <td className="border px-4 py-2">{i + 1}</td>
+                      {editingIndex === i ? (
+                        <>
+                          <td className="border px-4 py-2">
+                            <input
+                              name="name"
+                              value={editValues.name}
+                              onChange={handleInputChange}
+                            />
+                          </td>
+                          <td className="border px-4 py-2">
+                            <input
+                              name="brand"
+                              value={editValues.brand}
+                              onChange={handleInputChange}
+                            />
+                          </td>
+                          <td className="border px-4 py-2">
+                            <input
+                              name="size"
+                              value={editValues.size}
+                              onChange={handleInputChange}
+                            />
+                          </td>
+                          <td className="border px-4 py-2">
+                            <input
+                              name="stock"
+                              type="number"
+                              value={editValues.stock}
+                              onChange={handleInputChange}
+                            />
+                          </td>
+                          <td className="border px-4 py-2">
+                            <input
+                              name="location"
+                              value={editValues.location}
+                              onChange={handleInputChange}
+                            />
+                          </td>
+                          <td className="border px-4 py-2">
+                            <button
+                              onClick={handleSaveClick}
+                              className="bg-green-500 text-white px-3 py-1 rounded"
+                            >
+                              Save
+                            </button>
+                          </td>
+                        </>
+                      ) : (
+                        <>
+                          <td className="border px-4 py-2">{item.name}</td>
+                          <td className="border px-4 py-2">{item.brand}</td>
+                          <td className="border px-4 py-2">{item.size}</td>
+                          <td className="border px-4 py-2">{item.stock}</td>
+                          <td className="border px-4 py-2">{item.location}</td>
+                          <td className="border px-4 py-2">
+                            <button
+                              onClick={() => handleEditClick(i)}
+                              className="bg-yellow-500 text-white px-3 py-1 rounded"
+                            >
+                              Edit
+                            </button>
+                            <button
+                              onClick={() => handleDeleteClick(item._id)}
+                              className="bg-red-500 text-white px-3 py-1 rounded"
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </>
+                      )}
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
