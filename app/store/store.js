@@ -1,10 +1,11 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import authReducer from "./authSlice"; // Import your reducer
+import authReducer from "./authSlice";
+import registerReducer from "./registerSlice";
 
 // Combine all reducers
 const rootReducer = combineReducers({
   auth: authReducer,
-  // crud: 
+  register: registerReducer,
 });
 
 // Configure the store
