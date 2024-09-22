@@ -1,6 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
 import NavBar from '../components/NavBar'
 
 const stockPage = () => {
@@ -34,9 +32,43 @@ const stockPage = () => {
               <input type="text" placeholder="Search" className="w-[14.219vw] h-[2vw] rounded-[0.5vw] drop-shadow-lg px-[0.5vw]"/>
             </div>
           </div>
-        </div>
-    </section>
-  )
-}
 
-export default stockPage
+        <div className="px-[3vw] flex-1">
+          <div className="w-full max-h-[50vh] overflow-y-auto">
+            <table className="min-w-full table-auto border-collapse text-left">
+              <thead className="bg-[#E5E2E2] sticky top-0 z-10 border-b border-t">
+                <tr>
+                 <th className="border px-4 py-2 text-[#43066C]">No</th>
+                  <th className="border px-4 py-2 text-[#43066C]">Item Name</th>
+                  <th className="border px-4 py-2 text-[#43066C]">Brand</th>
+                  <th className="border px-4 py-2 text-[#43066C]">Size (cm)</th>
+                  <th className="border px-4 py-2 text-[#43066C]">Stock</th>
+                  <th className="border px-4 py-2 text-[#43066C]">Location</th>
+                  <th className="border px-4 py-2 text-[#43066C]">Option</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white">
+                {[...Array(10)].map((_, i) => (
+                    <tr key={i} className="hover:bg-[#F3F4F6]">
+                    <td className="border px-4 py-2">{i + 1}</td>
+                    <td className="border px-4 py-2">Dummy</td>
+                    <td className="border px-4 py-2">Dumbrand</td>
+                    <td className="border px-4 py-2">8x10</td>
+                    <td className="border px-4 py-2">1</td>
+                    <td className="border px-4 py-2">Jogja</td>
+                    <td className="border px-4 py-2 space-x-2">
+                    <button className="bg-yellow-500 text-white px-3 py-1 rounded">Edit</button>
+                    <button className="bg-red-500 text-white px-3 py-1 rounded">Delete</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default stockPage;
