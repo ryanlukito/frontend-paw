@@ -3,7 +3,8 @@ import authReducer from "./authSlice"; // Import your reducer
 
 // Combine all reducers
 const rootReducer = combineReducers({
-  auth: authReducer, // Add other reducers here if necessary
+  auth: authReducer,
+  // crud: 
 });
 
 // Configure the store
