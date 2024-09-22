@@ -2,15 +2,33 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import axios from "axios";
 
 const AddItem = () => {
+  // const baseUrl = "http://localhost:1234/api/v1/dummyproducts";
+  const baseUrl = "https://backend-paw-rho.vercel.app/api/v1/dummyproducts";
   const [itemName, setItemName] = useState("");
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState(0);
   const [stock, setStock] = useState(0);
   const [location, setLocation] = useState("");
 
-  const postData = () => {};
+  // Handle add new product
+  const handleAddClick = async () => {
+    const newProduct = {
+      name: itemName,
+      brand: brand,
+      size: size,
+      stock: stock,
+      location: location,
+    };
+    try {
+      const response = await axios.post(baseUrl, newProduct);
+      console.log(response);
+    } catch (error) {
+      console.error("Error adding product:", error);
+    }
+  };
   return (
     <section className="w-screen h-screen p-[3vw] bg-[#F2EDFCE5] flex flex-row items-center justify-center">
       <div className="flex w-[90vw] h-[40vw] justify-around">
@@ -40,6 +58,8 @@ const AddItem = () => {
                     type="text"
                     placeholder=""
                     className="w-[17.147vw] h-[2.804vw] drop-shadow-lg rounded-[0.5vw] border-[0.04vw] border-[#9B9595] px-[0.5vw] placeholder:text-[1vw]"
+                    value={size}
+                    onChange={(e) => setSize(e.target.value)}
                   />
                 </div>
               </div>
@@ -49,6 +69,8 @@ const AddItem = () => {
                   type="text"
                   placeholder=""
                   className="w-[36.8vw] h-[2.804vw] drop-shadow-lg rounded-[0.5vw] border-[0.04vw] border-[#9B9595] px-[0.5vw] placeholder:text-[1vw]"
+                  value={brand}
+                  onChange={(e) => setBrand(e.target.value)}
                 />
               </div>
               <div className="flex items justify-between">
@@ -58,6 +80,8 @@ const AddItem = () => {
                     type="text"
                     placeholder=""
                     className="w-[10vw] h-[2.804vw] drop-shadow-lg rounded-[0.5vw] border-[0.04vw] border-[#9B9595] px-[0.5vw] placeholder:text-[1vw]"
+                    value={stock}
+                    onChange={(e) => setStock(e.target.value)}
                   />
                 </div>
                 <div className="flex flex-col">
@@ -66,10 +90,15 @@ const AddItem = () => {
                     type="text"
                     placeholder=""
                     className="w-[24vw] h-[2.804vw] drop-shadow-lg rounded-[0.5vw] border-[0.04vw] border-[#9B9595] px-[0.5vw] placeholder:text-[1vw]"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
                   />
                 </div>
               </div>
-              <button className="w-[36.8vw] h-[2.976vw] bg-purple-900 flex items-center justify-center text-white font-bold text-[0.938vw] rounded-[0.3vw] hover:bg-purple-950 transition ease-in-out duration-500">
+              <button
+                className="w-[36.8vw] h-[2.976vw] bg-purple-900 flex items-center justify-center text-white font-bold text-[0.938vw] rounded-[0.3vw] hover:bg-purple-950 transition ease-in-out duration-500"
+                onClick={handleAddClick}
+              >
                 Save
               </button>
             </div>

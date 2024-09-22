@@ -18,9 +18,7 @@ const LoginPage = () => {
   );
   
   useEffect(() => {
-    if (isAuthenticated) {
-      router.push("/");
-    }
+    router.push("/");
   }, [isAuthenticated, router]);
 
   const handleLogin = (e) => {

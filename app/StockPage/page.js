@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useRouter } from "next/navigation";
 import NavBar from "../components/NavBar";
 import {
   getAllProduct,
@@ -10,55 +8,35 @@ import {
   updateProduct,
   deleteProduct,
 } from "../store/crudSlice";
+import axios from "axios";
 
 const StockPage = () => {
-  const router = useRouter();
-  const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const { data: items, loading } = useSelector((state) => state.crud);
+  // const baseUrl = "http://localhost:1234/api/v1/dummyproducts";
+  const baseUrl = "https://backend-paw-rho.vercel.app/api/v1/dummyproducts";
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true)
+
+  // Fetch all products from the backend
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(baseUrl);
+        setItems(response.data);
+        console.log(response);
+        setLoading(false)
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   const [editingIndex, setEditingIndex] = useState(null);
   const [editValues, setEditValues] = useState({});
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      router.push("/LoginPage");
-    } else {
-      dispatch(getAllProduct()); // Fetch the products once the user is authenticated
-    }
-  }, [isAuthenticated, router, dispatch]);
-
-  // Handle edit click
-  const handleEditClick = (index) => {
-    setEditingIndex(index);
-    setEditValues(items[index]);
-  };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditValues((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSaveClick = () => {
-    const updatedProduct = editValues;
-    const id = items[editingIndex]._id; // Assuming the product ID is stored in the '_id' field
-    dispatch(updateProduct({ id, data: updatedProduct }));
-    setEditingIndex(null);
-  };
-
-  const handleAddClick = () => {
-    const newProduct = {
-      name: "New Item",
-      brand: "New Brand",
-      size: "8x10",
-      stock: 10,
-      location: "Location",
-    };
-    dispatch(addProduct({ data: newProduct }));
-  };
-
-  const handleDeleteClick = (id) => {
-    dispatch(deleteProduct(id));
   };
 
   return (
@@ -105,7 +83,6 @@ const StockPage = () => {
                   <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">Size (cm)</th>
                   <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">Stock</th>
                   <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">Location</th>
-                  <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">Option</th>
                 </tr>
               </thead>
               <tbody className="bg-white">
@@ -167,20 +144,6 @@ const StockPage = () => {
                           <td className="border px-[0.833vw] py-[0.417vw]">{item.size}</td>
                           <td className="border px-[0.833vw] py-[0.417vw]">{item.stock}</td>
                           <td className="border px-[0.833vw] py-[0.417vw]">{item.location}</td>
-                          <td className="border px-[0.833vw] py-[0.417vw]">
-                            <button
-                              onClick={() => handleEditClick(i)}
-                              className="bg-yellow-500 text-white px-[0.625vw] py-[0.208vw] rounded"
-                            >
-                              Edit
-                            </button>
-                            <button
-                              onClick={() => handleDeleteClick(item._id)}
-                              className="bg-red-500 text-white px-[0.625vw] py-[0.208vw] rounded"
-                            >
-                              Delete
-                            </button>
-                          </td>
                         </>
                       )}
                     </tr>
