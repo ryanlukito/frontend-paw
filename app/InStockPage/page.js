@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import NavBar from '../components/NavBar'
 
-const stockPage = () => {
+const instockPage = () => {
   const [items, setItems] = useState(
     Array(10).fill({ name: 'Dummy', brand: 'Dumbrand', size: '8x10', stock: 1, location: 'Jogja' })
   );
@@ -29,15 +29,15 @@ const stockPage = () => {
     <section className="w-screen h-screen bg-[#FFFFFF] relative flex flex-row">
         <NavBar></NavBar>
         <div className="w-full h-full">
-          <h1 className="text-[2.604vw] text-[#43066C] font-bold py-[1.5vw] px-[3vw]">Hi, Welcome!</h1>
+          <h1 className="text-[2.604vw] text-[#43066C] font-bold py-[1.5vw] px-[3vw]">Hi, Admin!</h1>
           <div className="w-[full] h-[3.229vw] bg-[#E5E2E2] flex flex-row items-center">
             <div className="w-[0.365vw] h-full bg-[#9C9696]"></div>
             <h1 className="text-[#2B056B] text-[1.302vw] px-[2.7vw]">Dashboard</h1>
-            <p className=" text-[0.781vw] ml-[1vw]"><span className="text-[#6F23F2]">Home</span> / List Items</p>
+            <p className=" text-[0.781vw] ml-[1vw]"><span className="text-[#6F23F2]">Home</span> / In Stock</p>
           </div>
           <div className="w-full flex justify-between py-[2vw] px-[6vw]">
             <div>
-              <h1 className="text-[1.563vw] font-bold text-[#43066C] mb-[0.5vw]">List Items</h1>
+              <h1 className="text-[1.563vw] font-bold text-[#43066C] mb-[0.5vw]">In Stock</h1>
               <div className="flex items-center space-x-2">
                 <label className="text-[0.938vw] text-[#2B056B]">Show</label>
                 <select id="entries">
@@ -51,8 +51,8 @@ const stockPage = () => {
               </div>
             </div>
             <div className="flex flex-col">
-              <button className="w-[14.219vw] h-[1.927vw] bg-[#43066C] rounded-[0.4vw] font-bold text-white mb-[0.5vw]">Add Items</button>
-              <input type="text" placeholder="Search" className="w-[14.219vw] h-[2vw] rounded-[0.5vw] drop-shadow-lg px-[0.5vw]"/>
+              {/* <button className="w-[14.219vw] h-[1.927vw] bg-[#43066C] rounded-[0.4vw] font-bold text-white mb-[0.5vw]">Add Items</button> */}
+              <input type="text" placeholder="Search" className="w-[14.219vw] h-[2vw] rounded-[0.5vw] mt-[2.427vw] drop-shadow-lg px-[0.5vw]"/>
             </div>
           </div>
 
@@ -120,4 +120,4 @@ const stockPage = () => {
   );
 };
 
-export default stockPage;
+export default instockPage;
