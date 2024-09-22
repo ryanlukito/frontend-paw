@@ -9,9 +9,7 @@ dotenv.config();
 export default function Home() {
   return (
     <>
-      {/* <LoginPage /> */}
-      <StockPage/>
-      {/*<AddItem/>*/}
+      <StockPage />
     </>
   );
 }

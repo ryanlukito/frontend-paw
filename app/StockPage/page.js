@@ -1,12 +1,23 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 import NavBar from "../components/NavBar";
 
 const StockPage = () => {
+  const router = useRouter();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push("/LoginPage");
+    }
+  }, [isAuthenticated, router]);
+
   return (
     <section className="w-screen h-screen bg-[#FFFFFF] relative flex flex-row">
-      <NavBar></NavBar>
+      <NavBar />
       <div className="w-full h-full">
         <h1 className="text-[2.604vw] text-[#43066C] font-bold py-[1.5vw] px-[3vw]">
           Hi, Welcome!
