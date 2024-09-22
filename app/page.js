@@ -11,9 +11,9 @@ export default function Home() {
     <>
       {/* <LoginPage /> */}
       {/* <StockPage/> */}
-      {/* <AddItem/> */}
+      <AddItem/>
       {/* <OutStockPage/> */}
-      <InStockPage/>
+      {/* <InStockPage/> */}
     </>
   );
 }
