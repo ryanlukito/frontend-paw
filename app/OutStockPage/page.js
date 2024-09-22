@@ -78,25 +78,25 @@ const OutstockPage = () => {
             <table className="min-w-full table-auto border-collapse text-left">
               <thead className="bg-[#E5E2E2] sticky top-0 z-10 border-b border-t">
                 <tr>
-                  <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     No
                   </th>
-                  <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Item Name
                   </th>
-                  <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Brand
                   </th>
-                  <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Size (cm)
                   </th>
-                  <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Stock
                   </th>
-                  <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Location
                   </th>
-                  <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Option
                   </th>
                 </tr>
