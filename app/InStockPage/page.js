@@ -69,7 +69,7 @@ const InstockPage = () => {
           <div className="flex flex-col">
             <Links
               href="/AddItem"
-              className="w-[14.219vw] h-[2.3vw] bg-[#43066C] rounded-[0.4vw] font-bold text-white mb-[0.5vw] text-[1.5vw] text-center"
+              className="w-[14.219vw] h-[2.3vw] bg-[#43066C] rounded-[0.4vw] font-bold text-white mb-[0.5vw] text-[1vw] flex items-center justify-center"
             >
               Add Items
             </Links>
@@ -86,25 +86,25 @@ const InstockPage = () => {
             <table className="min-w-full table-auto border-collapse text-left">
               <thead className="bg-[#E5E2E2] sticky top-0 z-10 border-b border-t">
                 <tr>
-                  <th className="border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     No
                   </th>
-                  <th className="border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Item Name
                   </th>
-                  <th className="border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Brand
                   </th>
-                  <th className="border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Size (cm)
                   </th>
-                  <th className="border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Stock
                   </th>
-                  <th className="border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Location
                   </th>
-                  <th className="border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Option
                   </th>
                 </tr>
@@ -117,7 +117,7 @@ const InstockPage = () => {
                     </td>
                     {editingIndex === i ? (
                       <>
-                        <td className="border px-[0.833vw] py-[0.417vw]">
+                        <td className="border-[1vw] px-[0.833vw] py-[0.417vw]">
                           <input
                             name="name"
                             value={editValues.name}
