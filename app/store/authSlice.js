@@ -18,7 +18,8 @@ export const login = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post(
-        `https://backend-paw-rho.vercel.app/api/v1/login`,
+        // `https://backend-paw-rho.vercel.app/api/v1/login`,
+        `http://localhost:1234/api/v1/login`,
         credentials
       );
       return response.data;

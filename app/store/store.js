@@ -3,16 +3,13 @@ import authReducer from "./authSlice";
 import crudReducer from "./crudSlice";
 import registerReducer from "./registerSlice";
 
-// Combine all reducers
-const rootReducer = combineReducers({
-  auth: authReducer,
-  crud: crudReducer,
-  register: registerReducer,
-});
-
 // Configure the store
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    auth: authReducer,
+    crud: crudReducer,
+    register: registerReducer,
+  },
 });
 
 export default store;

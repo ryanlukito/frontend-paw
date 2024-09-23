@@ -24,11 +24,10 @@ const StockPage = () => {
     if (!isAuthenticated) {
       router.push("/LoginPage");
     } else {
-      dispatch(getAllProduct()); // Fetch the products once the user is authenticated
+      dispatch(getAllProduct());
     }
   }, [isAuthenticated, router, dispatch]);
 
-  // Handle edit click
   const handleEditClick = (index) => {
     setEditingIndex(index);
     setEditValues(items[index]);
