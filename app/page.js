@@ -10,10 +10,10 @@ export default function Home() {
   return (
     <>
       {/* <LoginPage /> */}
-      {/* <StockPage/> */}
+      <StockPage/>
       {/* <AddItem/> */}
       {/* <OutStockPage/> */}
-      <InStockPage/>
+      {/* <InStockPage/> */}
     </>
   );
 }
