@@ -1,17 +1,41 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
 import NavBar from "../components/NavBar";
+import { getAllProduct } from "../store/crudSlice";
+import axios from "axios";
 
 const OutstockPage = () => {
-  const [items, setItems] = useState(
-    Array(10).fill({
-      name: "Dummy",
-      brand: "Dumbrand",
-      size: "8x10",
-      stock: 1,
-      location: "Jogja",
-    })
-  );
+  const baseUrl = "http://localhost:1234/api/v1/products";
+  // const baseUrl = "https://backend-paw-rho.vercel.app/api/v1/dummyproducts";
+  const [items, setItems] = useState([]);
+
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push("/LoginPage");
+    } else {
+      dispatch(getAllProduct());
+    }
+  }, [isAuthenticated, router, dispatch]);
+
+  // Fetch all products from the backend
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(baseUrl);
+        setItems(response.data);
+        console.log(response)
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchProducts();
+  }, []);
   const [editingIndex, setEditingIndex] = useState(null);
   const [editValues, setEditValues] = useState({});
 
@@ -30,17 +54,6 @@ const OutstockPage = () => {
     updatedItems[editingIndex] = editValues;
     setItems(updatedItems);
     setEditingIndex(null);
-  };
-
-  const handleAddClick = () => {
-    const newProduct = {
-      name: "New Item",
-      brand: "New Brand",
-      size: "8x10",
-      stock: 10,
-      location: "Location",
-    };
-    dispatch(addProduct({ data: newProduct }));
   };
   return (
     <section className="w-screen h-screen bg-[#FFFFFF] relative flex flex-row">
@@ -78,26 +91,23 @@ const OutstockPage = () => {
             <table className="min-w-full table-auto border-collapse text-left">
               <thead className="bg-[#E5E2E2] sticky top-0 z-10 border-b border-t">
                 <tr>
-                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     No
                   </th>
-                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Item Name
                   </th>
-                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Brand
                   </th>
-                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Size (cm)
                   </th>
-                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Stock
                   </th>
-                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
+                  <th className="text-[1.5vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
                     Location
-                  </th>
-                  <th className="text-[1vw] border px-[0.833vw] py-[0.417vw] text-[#43066C]">
-                    Option
                   </th>
                 </tr>
               </thead>
@@ -168,17 +178,6 @@ const OutstockPage = () => {
                         </td>
                         <td className="border px-[0.833vw] py-[0.417vw]">
                           {item.location}
-                        </td>
-                        <td className="border px-[0.833vw] py-[0.417vw] flex justify-center">
-                          <button
-                            onClick={() => handleEditClick(i)}
-                            className="bg-yellow-500 text-white px-[0.625vw] py-[0.208vw] rounded mr-[0.5vw]"
-                          >
-                            Edit
-                          </button>
-                          <button className="bg-red-500 text-white px-[0.625vw] py-[0.208vw] rounded">
-                            Delete
-                          </button>
                         </td>
                       </>
                     )}

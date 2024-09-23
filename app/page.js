@@ -1,7 +1,6 @@
 "use client";
 
-import StockPage from "./StockPage/page";
-import RegisterPage from "./RegisterPage/page";
+import StockPage from "./components/SockPage";
 
 export default function Home() {
   return (

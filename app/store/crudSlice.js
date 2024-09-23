@@ -2,11 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // Set axios defaults globally
-// axios.defaults.baseURL = 'https://backend-paw-rho.vercel.app/api/v1';
 axios.defaults.baseURL = 'http://localhost:1234/api/v1';
-axios.defaults.withCredentials = true;
 
-// Initial state
 const initialState = {
   loading: false,
   data: [],
@@ -49,7 +46,7 @@ export const deleteProduct = createAsyncThunk(
   "crud/deleteProduct",
   async (id) => {
     const response = await axios.delete(`/products/${id}`);
-    return { id }; // Return the product ID instead of the deleted product
+    return { id }; // Return the product ID
   }
 );
 
@@ -80,7 +77,7 @@ const crudSlice = createSlice({
       })
       .addCase(getProductbyId.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = [action.payload]; // Stores the product as array
+        state.data = [action.payload];
         state.error = null;
       })
       .addCase(getProductbyId.rejected, (state, action) => {
@@ -113,7 +110,7 @@ const crudSlice = createSlice({
       })
       .addCase(addProduct.fulfilled, (state, action) => {
         state.loading = false;
-        state.data.push(action.payload); // Adds the new product
+        state.data.push(action.payload); // Add new product
         state.error = null;
       })
       .addCase(addProduct.rejected, (state, action) => {
@@ -128,10 +125,8 @@ const crudSlice = createSlice({
       })
       .addCase(deleteProduct.fulfilled, (state, action) => {
         state.loading = false;
-        const deletedProductId = action.meta.arg; // Use passed ID since response might not have the product
-        state.data = state.data.filter(
-          (product) => product._id !== deletedProductId
-        );
+        const deletedProductId = action.payload.id; // Use the returned ID
+        state.data = state.data.filter((product) => product._id !== deletedProductId);
         state.error = null;
       })
       .addCase(deleteProduct.rejected, (state, action) => {
